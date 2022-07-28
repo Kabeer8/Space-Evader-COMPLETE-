@@ -1,3 +1,4 @@
+//2022-07-27
 //Creates Canvas
 let cnv = document.getElementById("my-canvas");
 let ctx = cnv.getContext("2d");
@@ -114,7 +115,7 @@ function animate(){
                 hit.pause();
                 hit.currentTime = 0;
                 hit.play()
-                playerHP -= 10;
+                playerHP -= Math.round(Math.random() * (10 - 5) + 5);
                 asteroids[i].x = 1300;
                 asteroids[i].y = Math.floor(Math.random() * 630);
             }
@@ -236,16 +237,18 @@ function animate(){
 
     if (playerHP <= 0){
         rect(0, 0, 1300, 520, "black");
-        text("Objective failed, refresh to try again.", 425, 250, "red" );
+        text("Objective failed, press the space bar to try again.", 360, 250, "red" );
+        missileSFX.pause();
+        hit.pause();
+        boom.pause();
         music.pause();
-        music.currentTime = 0;
         loss.play();
         cancelAnimationFrame(raf)
     }
     if (villainHP <= 0){
         missileSFX.pause();
         rect(0, 0, 1300, 520, "black");
-        text("Objective complete, refresh to play again.", 425, 250, "green" );
+        text("Objective complete, press the space bar to play again.", 360, 250, "green" );
         cancelAnimationFrame(raf);
     }
 }
@@ -273,5 +276,8 @@ function start(event){
         }
         info.pause();
         info.currentTime = 0;
+        if(playerHP == 0 || villainHP <= 0){
+            location.reload();
+        }
     }
 }
