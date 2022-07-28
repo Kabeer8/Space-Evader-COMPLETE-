@@ -202,7 +202,7 @@ function animate(){
             bullet.y = villain.y + 170
             fire = true;
         }
-        if(bullet.y == villain.y + 170){
+        if(fire == true){
             missileSFX.play()
         }
     }
@@ -273,4 +273,3 @@ function start(event){
         info.currentTime = 0;
     }
 }
-
