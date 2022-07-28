@@ -111,6 +111,8 @@ function animate(){
          }
          for(d = 0; d < 80; d++){
             if(dist(player.x + d, player.y + 15, asteroids[i].x , asteroids[i].y) <= 15){
+                hit.pause();
+                hit.currentTime = 0;
                 hit.play()
                 playerHP -= 10;
                 asteroids[i].x = 1300;
@@ -202,7 +204,7 @@ function animate(){
             bullet.y = villain.y + 170
             fire = true;
         }
-        if(bullet.y == villain.y + 170){
+        if(fire == true){
             missileSFX.play()
         }
     }
