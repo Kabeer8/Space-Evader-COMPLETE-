@@ -275,4 +275,3 @@ function start(event){
         info.currentTime = 0;
     }
 }
-
