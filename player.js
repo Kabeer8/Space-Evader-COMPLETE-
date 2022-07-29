@@ -18,13 +18,13 @@ function keyupHandler(event){
     if(event.keyCode === 39){
         player.yVD = 0;
     }
-    if(event.keyCode === 80){
+    if(event.keyCode === 80 && go == true){
         if (paused == false){
+            music.pause();
+            missileSFX.pause();
             ctx.drawImage(fade, 0, 0, 190, 190, 0, 0, 1300, 520);
             ctx.drawImage(gamePause, 0, 0, 394, 360, 575, 150, 200, 200);
             cancelAnimationFrame(raf);
-            music.pause();
-            missileSFX.pause();
             halt = 1.7;
             paused = true;
         }
