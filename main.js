@@ -14,6 +14,10 @@ let go = false;
 let goodGuy = new Image();
 goodGuy.src = "assets/Protaginist Ship Frames.png";
 let player = {x:800, y:310, yVU:0, yVD:0, w:80, h:30, yF:0};
+let gamePause = new Image();
+gamePause.src = "assets/Pause.png";
+let fade = new Image();
+fade.src = "assets/Fade.png";
 
 //Creates badGuy
 let badGuy = new Image();
@@ -82,7 +86,7 @@ let goodBar = "green"
 //UI text
 function text(text, x, y,c){
     ctx.fillStyle = c;
-    ctx.font = "20px Courier New";
+    ctx.font = "30px Courier New";
     ctx.fillText(text, x, y);
 }
 
@@ -220,7 +224,7 @@ function animate(){
     }
     //UI
     rect(0, 520,1300, 100, "DarkSlateGray");
-    text("Destroyer", 250, 550, "white" );
+    text("Destroyer", 230, 550, "white" );
     text("Player", 950, 550,"white" );
     rect(50, 560, 500, 50, "black");
     rect(750, 560, 500, 50, "black");
@@ -232,12 +236,12 @@ function animate(){
     if(playerHP <= 20){goodBar = "red";}
     rect(50, 560, villainHP*5, 50, badBar);
     rect(750, 560, playerHP*5, 50, goodBar);
-    text(Math.round(villainHP) +"%", 275, 580, "white" );
-    text(playerHP +"%", 950, 580, "white" );
+    text(Math.round(villainHP) +"%", 275, 590, "white" );
+    text(playerHP +"%", 970, 590, "white" );
 
     if (playerHP <= 0){
-        rect(0, 0, 1300, 520, "black");
-        text("Objective failed, press the space bar to try again.", 360, 250, "red" );
+        ctx.drawImage(fade, 0, 0, 190, 190, 0, 0, 1300, 520);
+        text("Objective failed, press the space bar to try again.", 200, 250, "red" );
         missileSFX.pause();
         hit.pause();
         boom.pause();
@@ -247,37 +251,13 @@ function animate(){
     }
     if (villainHP <= 0){
         missileSFX.pause();
-        rect(0, 0, 1300, 520, "black");
-        text("Objective complete, press the space bar to play again.", 360, 250, "green" );
+        ctx.drawImage(fade, 0, 0, 190, 190, 0, 0, 1300, 520);
+        text("Objective complete, press the space bar to play again.", 200, 250, "green" );
         cancelAnimationFrame(raf);
     }
+
 }
 
-text("Press space to start", 525, 250, "white" );
-text("Press 'i' for information", 500, 270, "white" );
+text("Press space to start", 450, 200, "white" );
+text("Press 'i' for information. Press 'p' to pause game.", 175, 230, "white" );
 
-document.addEventListener("keyup", start)
-function start(event){
-    if(event.keyCode === 73){
-        info.play()
-        text("Your mission: Evade the missiles deployed by the destroyer while cruising through an ", 125, 300, "white" );
-        text("asteroid belt. The destroyer is slow and not suited to its current environment. Use ", 125, 320, "white" );
-        text("this to your advantage. Use the left arrow key to go up and the right one to go down.", 125, 340, "white" );
-        text("Once ready, you may press the space bar to start, good luck.", 250, 360,"white");
-    }
-    if(event.keyCode === 32){
-        if(go == false){
-            animate()
-            music.play();
-            setInterval(function(){
-                villainHP -= 1.7;
-            },1000);
-            go = true;
-        }
-        info.pause();
-        info.currentTime = 0;
-        if(playerHP == 0 || villainHP <= 0){
-            location.reload();
-        }
-    }
-}
