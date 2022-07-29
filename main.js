@@ -9,6 +9,8 @@ let playerHP = 100;
 let villainHP = 100;
 let fire = true;
 let go = false;
+let musicSelector = (Math.random() * (2 - 1) + 1);
+
 
 //Creates player 
 let goodGuy = new Image();
@@ -98,9 +100,14 @@ let missileSFX = new Audio ("assets/missile.mp3");
 let win = new Audio ("assets/Win.mp3");
 let boom = new Audio ("assets/Boom.mp3");
 let info = new Audio("assets/instructions.mp3")
-let music = new Audio("assets/ItHasToBeThisWay.mp3")
-missileSFX. volume = 0.4;
-music.volume = 0.5;
+let music ="";
+if(musicSelector <= 1.5){
+    music = new Audio("assets/ItHasToBeThisWay.mp3")
+    music.volume = 0.4;
+} else{
+    music = new Audio("assets/Smell of the Game.mp3")
+}
+missileSFX. volume = 0.2;
 
 
 let raf
