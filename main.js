@@ -1,4 +1,9 @@
 //2022-07-27
+// music was found on youtube
+//https://www.youtube.com/watch?v=pqnq3Hn-wds&list=PL7O5DJrr7zDt4ZWYg9G6MysZ7RcWH1iL0&index=6
+//https://www.youtube.com/watch?v=aaSnrp0DbQc
+
+
 //Creates Canvas
 let cnv = document.getElementById("my-canvas");
 let ctx = cnv.getContext("2d");
