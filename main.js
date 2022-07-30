@@ -102,18 +102,20 @@ function text(text, x, y,c){
 let loss = new Audio("assets/Lose.mp3");
 let hit = new Audio ("assets/Hit.mp3");
 let missileSFX = new Audio ("assets/missile.mp3");
-let win = new Audio ("assets/Win.mp3");
 let boom = new Audio ("assets/Boom.mp3");
 let info = new Audio("assets/instructions.mp3")
 let music ="";
 if(musicSelector <= 1.5){
     music = new Audio("assets/ItHasToBeThisWay.mp3")
-    music.volume = 0.4;
+    music.volume = 0.25;
 } else{
     music = new Audio("assets/Smell of the Game.mp3")
+    music.volume = 0.3;
 }
-missileSFX. volume = 0.2;
-
+missileSFX. volume = 0.05;
+hit.volume = 0.2;
+info. volume = 0.1;
+loss.volume = 0.5
 
 let raf
 function animate(){
