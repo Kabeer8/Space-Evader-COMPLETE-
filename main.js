@@ -112,7 +112,7 @@ if(musicSelector <= 1.5){
     music = new Audio("assets/Smell of the Game.mp3")
     music.volume = 0.3;
 }
-missileSFX. volume = 0.05;
+missileSFX. volume = 0.08;
 hit.volume = 0.2;
 info. volume = 0.1;
 loss.volume = 0.5
